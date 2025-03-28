@@ -141,14 +141,14 @@ function App() {
       {opponentTeam && opponentColor && (
         <div>
           <p>{`您與第${opponentTeam}隊比賽，您的顏色是：${selectedColor}，對方顏色是：${opponentColor}`}</p>
-          <p>{`紅方（您的隊伍）禁用角色：`}</p>
+          <p>{`紅方禁用角色：`}</p>
           <div>
             {redBannedCharacters.map((char, index) => (
               <span key={index}>{char}, </span>
             ))}
           </div>
 
-          <p>{`藍方（對方隊伍）禁用角色：`}</p>
+          <p>{`藍方禁用角色：`}</p>
           <div>
             {blueBannedCharacters.map((char, index) => (
               <span key={index}>{char}, </span>
