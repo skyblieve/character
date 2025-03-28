@@ -58,7 +58,6 @@ const characters = [
 ];
 
 function App() {
-  const [selectedTeam, setSelectedTeam] = useState(null);
   const [selectedColor, setSelectedColor] = useState(null);
   const [opponentTeam, setOpponentTeam] = useState(null);
   const [opponentColor, setOpponentColor] = useState(null);
@@ -70,24 +69,12 @@ function App() {
   const [isRedBanActive, setRedBanActive] = useState(false);
   const [isBlueBanActive, setBlueBanActive] = useState(false);
 
-  const handleTeamSelection = (team) => {
-    setSelectedTeam(team);
-    setOpponentTeam(null); // 清除對方隊伍
-    setSelectedColor(null); // 清除顏色選擇
-    setRedBannedCharacters([]); // 清空紅方禁用角色
-    setBlueBannedCharacters([]); // 清空藍方禁用角色
-  };
-
   const handleColorSelection = (color) => {
     setSelectedColor(color);
     setOpponentColor(color === 'red' ? 'blue' : 'red');
   };
 
   const handleOpponentSelection = (team) => {
-    if (team === selectedTeam) {
-      alert('不能與自己隊伍比賽');
-      return;
-    }
     setOpponentTeam(team);
   };
 
@@ -103,16 +90,15 @@ function App() {
 
   const handleRedBanToggle = () => {
     setRedBanActive(true);
-    setBlueBanActive(false); // 禁用藍方
+    setBlueBanActive(false);
   };
 
   const handleBlueBanToggle = () => {
     setBlueBanActive(true);
-    setRedBanActive(false); // 禁用紅方
+    setRedBanActive(false);
   };
 
   const resetSelection = () => {
-    setSelectedTeam(null);
     setSelectedColor(null);
     setOpponentTeam(null);
     setOpponentColor(null);
@@ -126,26 +112,10 @@ function App() {
   return (
     <div className="App">
       <button className="reset-button" onClick={resetSelection}>重置</button>
-      <h1>選擇你的隊伍</h1>
+      <h1>選擇你的顏色</h1>
 
-      {!selectedTeam && (
+      {!selectedColor && (
         <div>
-          <button onClick={() => handleTeamSelection(1)}>第1隊</button>
-          <button onClick={() => handleTeamSelection(2)}>第2隊</button>
-          <button onClick={() => handleTeamSelection(3)}>第3隊</button>
-          <button onClick={() => handleTeamSelection(4)}>第4隊</button>
-          <button onClick={() => handleTeamSelection(5)}>第5隊</button>
-          <button onClick={() => handleTeamSelection(6)}>第6隊</button>
-          <button onClick={() => handleTeamSelection(7)}>第7隊</button>
-          <button onClick={() => handleTeamSelection(8)}>第8隊</button>
-          <button onClick={() => handleTeamSelection(9)}>第9隊</button>
-          <button onClick={() => handleTeamSelection(10)}>第10隊</button>
-        </div>
-      )}
-
-      {selectedTeam && !selectedColor && (
-        <div>
-          <p>{`第${selectedTeam}隊，選擇顏色：`}</p>
           <button onClick={() => handleColorSelection('red')} style={{ backgroundColor: 'red' }}>紅色</button>
           <button onClick={() => handleColorSelection('blue')} style={{ backgroundColor: 'blue' }}>藍色</button>
         </div>
@@ -153,7 +123,7 @@ function App() {
 
       {selectedColor && !opponentTeam && (
         <div>
-          <p>{`您與第${selectedTeam}隊比賽，您的顏色是：${selectedColor}`}</p>
+          <p>{`您的顏色是：${selectedColor}`}</p>
           <p>請選擇對方隊伍：</p>
           <button onClick={() => handleOpponentSelection(1)}>第1隊</button>
           <button onClick={() => handleOpponentSelection(2)}>第2隊</button>
@@ -170,14 +140,15 @@ function App() {
 
       {opponentTeam && opponentColor && (
         <div>
-          <p>{`紅方（第${selectedTeam}隊）禁用角色：`}</p>
+          <p>{`您與第${opponentTeam}隊比賽，您的顏色是：${selectedColor}，對方顏色是：${opponentColor}`}</p>
+          <p>{`紅方（您的隊伍）禁用角色：`}</p>
           <div>
             {redBannedCharacters.map((char, index) => (
               <span key={index}>{char}, </span>
             ))}
           </div>
 
-          <p>{`藍方（第${opponentTeam}隊）禁用角色：`}</p>
+          <p>{`藍方（對方隊伍）禁用角色：`}</p>
           <div>
             {blueBannedCharacters.map((char, index) => (
               <span key={index}>{char}, </span>
