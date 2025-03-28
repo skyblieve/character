@@ -1,27 +1,44 @@
-/* 將頁面內容居中 */
 .App {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* 使容器高度為視窗高度 */
   text-align: center;
+  font-size: 20px;
+  font-family: Arial, sans-serif;
 }
 
-/* 設置顏色標籤的基本樣式 */
-.color-label {
-  padding: 5px 10px; /* 內邊距 */
-  border-radius: 5px; /* 圓角效果 */
-  font-weight: bold; /* 加粗字體 */
-  color: white; /* 文字顏色 */
+button {
+  font-size: 20px;
+  padding: 10px;
+  margin: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* 紅色隊伍的背景 */
+.reset-button {
+  background-color: orange;
+  color: white;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.color-box {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
 .red {
   background-color: red;
 }
 
-/* 藍色隊伍的背景 */
 .blue {
   background-color: blue;
+}
+
+.banned {
+  background-color: grey;
+  color: white;
+  margin: 5px;
 }
