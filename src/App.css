@@ -1,0 +1,27 @@
+/* 將頁面內容居中 */
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 使容器高度為視窗高度 */
+  text-align: center;
+}
+
+/* 設置顏色標籤的基本樣式 */
+.color-label {
+  padding: 5px 10px; /* 內邊距 */
+  border-radius: 5px; /* 圓角效果 */
+  font-weight: bold; /* 加粗字體 */
+  color: white; /* 文字顏色 */
+}
+
+/* 紅色隊伍的背景 */
+.red {
+  background-color: red;
+}
+
+/* 藍色隊伍的背景 */
+.blue {
+  background-color: blue;
+}
